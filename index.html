@@ -47,7 +47,7 @@
 
 <p>10 players spawn onto a map, 5 per side. One player can only control one champion. There are paths to reach the other team's base, protected by destructible but damaging towers. The first team to destroy the other team's base wins. Players can earn gold to buy items to become stronger. Gold is earned through killing enemy minions (computer spawned AI pawns) or successfully killing an enemy champion. When a champion dies, he or she will be respawned on a timer that increases over time. When uncontested, objectives such as parts of the base can be destroyed - leading to victory.</p>
 <p>Each League game starts from a reset map, like each game of chess. Everyone starts from the same position but it's up to how you make your moves that distinguishes the good from the bad.</p>
-<p>For a more visual description or for even more details, we'll let Riot Games make their pitch: <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/get-started/what-is-lol/"What is LoL</a></p>
+<p>For a more visual description or for even more details, we'll let Riot Games make their pitch: <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/get-started/what-is-lol/">What is LoL</a></p>
 <p>Or perhaps watch a League Game currently being streamed live on Twitch.tv: <a href="http://www.twitch.tv/directory/game/League%20of%20Legends">League Streams</a></p>
 
 <h3>
@@ -69,25 +69,25 @@
 
 <p>Again, in order of logic:</p>
 
-<p>A. <a href="Learning The API.html">Learning The API </a></p>
+<p>A. <a href="LearningTheAPI.html">Learning The API </a></p>
 <ul>
 <li><p>Our first experimentation with the API, familiarity with working with the Riot API which is found https://developer.riotgames.com/api/methods and queriable through curl to return json objects</p></li>
 <li><p>Although easy to get, the json objects were often large and contained many nested layers</p></li>
 <li><p>We demonstrate the ability to search for and find some statsitics for how Wesley and Jason have historically done on two given champions</p></li>
 </ul>
-<p>B. <a href="Get Training Data.html">Get Training Data </a></p>
+<p>B. <a href="GetTrainingData.html">Get Training Data </a></p>
 <ul>
 <li><p>This file does the task of doing the data aquisition</p></li>
 <li><p>Match IDs are generated systematically and then querried</p></li>
 <li><p>If the game mode is of the main map, we access all 10 players and get their IDs and champions they played</p></li>
 <li><p>These numbers are saved to a file for easy access</p></li>
 </ul>
-<p>C. <a href="DataSummarizing and Cleaning.html">Data Summarizing and Cleaning</a></p>
+<p>C. <a href="DataSummarizingAndCleaning.html">Data Summarizing and Cleaning</a></p>
 <ul>
 <li><p>Each of the game data for each player in a game is parsed and we look up each players historic statistics on the character they were playing, and append to a master map of feature vectors concluding with a vector resulting in result</p></li>
 <li><p>We rationalize some expectations for the features that we collect, from useful to not. Please take a look!</p></li>
 </ul>
-<p>D. <a href="Initial Data Analysis.html">Initial Data Analysis</a></p>
+<p>D. <a href="InitialDataAnalysis.html">Initial Data Analysis</a></p>
 <ul>
 <li><p>We want to predict, given some historic stats on of a player's performance, the probability that a player will win his/her next game</p></li>
 <li><p>To simplify the model, we assume a players future performance is independent of his/her teammates</p></li>
@@ -96,7 +96,7 @@
 <li><p>We decided against a SVM or KNN because most of the data is overlapped</p></li>
 <li><p>Conclusion: The model is around 55-60% accurate on predicting the test set which is better than guessing. Furthermore, it's surprising to note that a lower KD increases the chance of winning. (See file for more information.)</p></li>
 </ul>
-<p>E. <a href="Full Data Analysis.html">Full Data Analysis</a></p>
+<p>E. <a href="FullDataAnalysis.html">Full Data Analysis</a></p>
 <ul>
 <li><p>We decide to improve our predictor by adding more features. We perform the similar analysis in the initial data analysis</p></li>
 <li><p>The similar conclusions hold. We increase our accuracy to 62% which is reasonable better than just randomly guessing</p></li>
