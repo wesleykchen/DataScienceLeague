@@ -35,7 +35,7 @@
         <iframe width="560" height="315" src="//www.youtube.com/embed/xp3MlMjT4g8" frameborder="0" allowfullscreen></iframe>
 
         <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>League of... Legends?</h3>
+<a id="leagueoflegends" class="anchor" href="#leagueoflegends" aria-hidden="true"><span class="octicon octicon-link"></span></a>League of... Legends?</h3>
 
 <p>Every day, around the world, there are 27 million unique players on League. In comparison, World of Warcraft, which you may have heard of being hyper-addicting, only ever brought in 12 million players per day at its peak.</p>
 <p>There are professional teams from every continent. The world championship this year was held in the Seoul Olympic Stadium, attended to live by 45,000. They competed for a $1,000,000 grand prize and the opening ceremony included a commissioned piece for League of Legends by Imagine Dragons (<a href="https://www.youtube.com/watch?v=O-0AvmP94n0">found here!</a>)</p>
@@ -43,27 +43,88 @@
 <p>With so many games being played, the data of League of Legends is just as readily available as statistics in other sports. It's time to apply data science to League of Legends.</p>
 
 <h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>How To Play</h3>
+<a id="howtoplay" class="anchor" href="#howtoplay" aria-hidden="true"><span class="octicon octicon-link"></span></a>How To Play</h3>
 
 <p>10 players spawn onto a map, 5 per side. One player can only control one champion. There are paths to reach the other team's base, protected by destructible but damaging towers. The first team to destroy the other team's base wins. Players can earn gold to buy items to become stronger. Gold is earned through killing enemy minions (computer spawned AI pawns) or successfully killing an enemy champion. When a champion dies, he or she will be respawned on a timer that increases over time. When uncontested, objectives such as parts of the base can be destroyed - leading to victory.</p>
 <p>Each League game starts from a reset map, like each game of chess. Everyone starts from the same position but it's up to how you make your moves that distinguishes the good from the bad.</p>
-<p>For a more visual description or for even more details, we'll let Riot Games make their pitch: http://gameinfo.na.leagueoflegends.com/en/game-info/get-started/what-is-lol/</p>
-<p>Or perhaps watch a League Game currently being streamed live on Twitch.tv: http://www.twitch.tv/directory/game/League%20of%20Legends</p>
+<p>For a more visual description or for even more details, we'll let Riot Games make their pitch: <a href="http://gameinfo.na.leagueoflegends.com/en/game-info/get-started/what-is-lol/"What is LoL</a></p>
+<p>Or perhaps watch a League Game currently being streamed live on Twitch.tv: <a href="http://www.twitch.tv/directory/game/League%20of%20Legends">League Streams</a></p>
 
 <h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a id="projectgoals" class="anchor" href="#projectgoals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Goals</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ol style="list-style-type: decimal">
+<li><p>Get training data of many past matches and players on the champions they were playing</p></li>
+<li><p>For each player, get his or her previous statistics with the same champion</p></li>
+<li><p>Train with the result of the match as the target to see if we can determine which statistics were the most useful to predict win or loss</p></li>
+<li><p>Learn from working with the data and any analysis to see if any surprising data-supported claims could be made</p></li>
+</ol>
 
 <h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Book Walkthrough/Overview</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Our project is broken down into 5 other iPython notebooks where we perform modularized tasks to achieve our final predictive state. The goal if the iis to provide some general introduction, high level orgnization and some summarizing comments more related to the project experience. The first 3 notebooks are regarding data aquisition and cleaning and are written more as utility functions to create and clean data files wheras the latter 2 notebooks are aout analysis where we see results and are written as reports with discussions under each figure in the file itself.</p>
+<p>Also listed below are the iPython notebook names to follow through the logic of our project - with some comments about each notebook as well. Please cross-reference them with the actual notebook contents and comments when looking through the code and visualizations.</p>
+<p>Again, in order of logic:</p>
+<p>A. Learning The API.ipynb</p>
+<ul>
+<li><p>Our first experimentation with the API, familiarity with working with the Riot API which is found https://developer.riotgames.com/api/methods and queriable through curl to return json objects</p></li>
+<li><p>Although easy to get, the json objects were often large and contained many nested layers</p></li>
+<li><p>We demonstrate the ability to search for and find some statsitics for how Wesley and Jason have historically done on two given champions</p></li>
+</ul>
+<p>B. GetTrainingData.ipynb</p>
+<ul>
+<li><p>This file does the task of doing the data aquisition</p></li>
+<li><p>Match IDs are generated systematically and then querried</p></li>
+<li><p>If the game mode is of the main map, we access all 10 players and get their IDs and champions they played</p></li>
+<li><p>These numbers are saved to a file for easy access</p></li>
+</ul>
+<p>C. DataSummarizing and Cleaning.ipynb</p>
+<ul>
+<li><p>Each of the game data for each player in a game is parsed and we look up each players historic statistics on the character they were playing, and append to a master map of feature vectors concluding with a vector resulting in result</p></li>
+<li><p>We rationalize some expectations for the features that we collect, from useful to not. Please take a look!</p></li>
+</ul>
+<p>D. Initial Data Analysis.ipynb</p>
+<ul>
+<li><p>We want to predict, given some historic stats on of a player's performance, the probability that a player will win his/her next game</p></li>
+<li><p>To simplify the model, we assume a players future performance is independent of his/her teammates</p></li>
+<li><p>We split the training data into two categories, whether the player is victorious or not</p></li>
+<li><p>We use a Random Forest predictor because of the categorical nature of the data (win or lose)</p></li>
+<li><p>We decided against a SVM or KNN because most of the data is overlapped</p></li>
+<li><p>Conclusion: The model is around 55-60% accurate on predicting the test set which is better than guessing. Furthermore, it's surprising to note that a lower KD increases the chance of winning. (See file for more information.)</p></li>
+</ul>
+<p>E. Full Data Analysis.ipynb</p>
+<ul>
+<li><p>We decide to improve our predictor by adding more features. We perform the similar analysis in the initial data analysis</p></li>
+<li><p>The similar conclusions hold. We increase our accuracy to 62% which is reasonable better than just randomly guessing</p></li>
+<li><p>More features does help us make feature-reated statements - claiming that certain statistics do not matter to predicting the result of the game which as a data-support claim is interesting by itself</p></li>
+</ul>
+</div>
+</div>
+</div>
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a id="unexpectedobstacles" class="anchor" href="#unexpectedobsacles" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unexpected Obstacles</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>A. Time Biasing Our historic statistics are time biased - meaning that they will always be prportional to time. A longer game has more kills and greater numbers, which will inflate the average. Therefore, our data will alway weight victories of long games over victories of shorter games. Similarly, losses of longer games are forgiven more. There is a further time variable of being able to surrender - when the game will end prematurely and not let the full statistics play out as a close game would.</p>
+<p>B. Strongly limited to Information API Contained A fix to the problem would be to not use the historic statsitics averaged by game but averaged by time. However, this data was not available as only the per-game average was stored. Choices had to be made to understand and work around API limitations.</p>
+<p>C. Understandably Harder to Predict with Large Variations League of Legends is truly a game played by all types and skill-levels of players. This caused a lot of variation. There were also confounding factors in correlation that made prediction difficult since the game is very team dependent. A strong solo performance is not enough. And sometimes, when the enemy team is being &quot;fed&quot; by your poor teammates, no one, no matter how well they are playing can deal with the enemy and thus your negative stats don't actually represent your performance.</p>
+
+
+<h3>
+<a id="futurework" class="anchor" href="#futurework" aria-hidden="true"><span class="octicon octicon-link"></span></a>Future Work</h3>
+
+<p>Given an understanding of what exact statistics are saved and available now, it may be interesting to be able to look at the data to see if we can make claims about a certain champion (ones that are hard to play, or those that although do indvidually well, tend to lose games anyway). Perhaps we could also filter the games colleted by the ELO (or think chess rating) to make some statements about how different quality players play differently. Having all levels of games may be putting in too much noise or variation to make overarching statement about the entire game.</p>
+
+<h3>
+<a id="conclusion" class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h3>
+
+<p>Overall, we were able to demonstrate some predctive 60-70% tuned power in a difficult space. We were able to identify important factors with past win rate on your champion and your kill-to-death ratio being the most important. Though other factors were close the predictive power of the kill-death ratio. Even more successfully, we were able to learn some interesting facts about the game from working with the data. The kill-death ratio, the most commonly cited statistics by players to boast ability, predicts game results fairly strongly - however, only at intermediate levels. Players that have too high of a KDA actually lose games - why? Perhaps they are playing too greedily and stealing all the gold away and netting a loss anyway!</p>
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h3>
+
+<p>If you'd like to contact the authors, feel free to e-mail them at <a href="mailto:wesleychen@college.harvard.edu">wesleychen@college.harvard.edu </a> and <a href="mailto:zihaowang01@college.harvard.edu">zihaowang01@college.harvard.edu </a>; we’d love to chat!.  Check out their Github pages for other work: Wesley Chen (<a href="https://github.com/" class="user-mention">@itsWezzles</a>), Zihao Wang (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a> and <a href="https://github.com/jasonwang999" class="user-mention">@jasonwang999</a>)</p>
       </section>
     </div>
 
