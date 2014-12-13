@@ -63,28 +63,31 @@
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Book Walkthrough/Overview</h3>
 
-<p>Our project is broken down into 5 other iPython notebooks where we perform modularized tasks to achieve our final predictive state. The goal if the iis to provide some general introduction, high level orgnization and some summarizing comments more related to the project experience. The first 3 notebooks are regarding data aquisition and cleaning and are written more as utility functions to create and clean data files wheras the latter 2 notebooks are aout analysis where we see results and are written as reports with discussions under each figure in the file itself.</p>
-<p>Also listed below are the iPython notebook names to follow through the logic of our project - with some comments about each notebook as well. Please cross-reference them with the actual notebook contents and comments when looking through the code and visualizations.</p>
+<p>Our project is broken down into 5 iPython notebooks which were exported to html for viewability of code (since Python does not run on web unlike javascript or the like) where we perform modularized tasks to achieve our final predictive state. The goal if the iis to provide some general introduction, high level orgnization and some summarizing comments more related to the project experience. The first 3 links are regarding data aquisition and cleaning and are written more as utility functions to create and clean data files wheras the latter 2 links are aout analysis where we see results and are written as reports with discussions under each figure in the file itself.</p>
+
+<p>Also listed below are the titles which are linked to the notebooks that follow the logic of our project - with some comments about each notebook as well. Please cross-reference them with the actual contents of each link when looking through the code and visualizations.</p>
+
 <p>Again, in order of logic:</p>
-<p>A. Learning The API.ipynb</p>
+
+<p>A. <a href="Learning The API.html">Learning The API </a></p>
 <ul>
 <li><p>Our first experimentation with the API, familiarity with working with the Riot API which is found https://developer.riotgames.com/api/methods and queriable through curl to return json objects</p></li>
 <li><p>Although easy to get, the json objects were often large and contained many nested layers</p></li>
 <li><p>We demonstrate the ability to search for and find some statsitics for how Wesley and Jason have historically done on two given champions</p></li>
 </ul>
-<p>B. GetTrainingData.ipynb</p>
+<p>B. <a href="Get Training Data.html">Get Training Data </a></p>
 <ul>
 <li><p>This file does the task of doing the data aquisition</p></li>
 <li><p>Match IDs are generated systematically and then querried</p></li>
 <li><p>If the game mode is of the main map, we access all 10 players and get their IDs and champions they played</p></li>
 <li><p>These numbers are saved to a file for easy access</p></li>
 </ul>
-<p>C. DataSummarizing and Cleaning.ipynb</p>
+<p>C. <a href="DataSummarizing and Cleaning.html">Data Summarizing and Cleaning</a></p>
 <ul>
 <li><p>Each of the game data for each player in a game is parsed and we look up each players historic statistics on the character they were playing, and append to a master map of feature vectors concluding with a vector resulting in result</p></li>
 <li><p>We rationalize some expectations for the features that we collect, from useful to not. Please take a look!</p></li>
 </ul>
-<p>D. Initial Data Analysis.ipynb</p>
+<p>D. <a href="Initial Data Analysis.html">Initial Data Analysis</a></p>
 <ul>
 <li><p>We want to predict, given some historic stats on of a player's performance, the probability that a player will win his/her next game</p></li>
 <li><p>To simplify the model, we assume a players future performance is independent of his/her teammates</p></li>
@@ -93,15 +96,12 @@
 <li><p>We decided against a SVM or KNN because most of the data is overlapped</p></li>
 <li><p>Conclusion: The model is around 55-60% accurate on predicting the test set which is better than guessing. Furthermore, it's surprising to note that a lower KD increases the chance of winning. (See file for more information.)</p></li>
 </ul>
-<p>E. Full Data Analysis.ipynb</p>
+<p>E. <a href="Full Data Analysis.html">Full Data Analysis</a></p>
 <ul>
 <li><p>We decide to improve our predictor by adding more features. We perform the similar analysis in the initial data analysis</p></li>
 <li><p>The similar conclusions hold. We increase our accuracy to 62% which is reasonable better than just randomly guessing</p></li>
 <li><p>More features does help us make feature-reated statements - claiming that certain statistics do not matter to predicting the result of the game which as a data-support claim is interesting by itself</p></li>
 </ul>
-</div>
-</div>
-</div>
 
 <h3>
 <a id="unexpectedobstacles" class="anchor" href="#unexpectedobsacles" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unexpected Obstacles</h3>
